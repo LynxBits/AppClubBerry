@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+  <mat-card-header class="cardHeader">
+    <mat-card-title class="cardHeaderTitle">{{ 'i18n_eventCard_header' | translate }} </mat-card-title>
+    <mat-card-subtitle class="cardHeaderSubTitle">{{ 'i18n_eventCard_subHeader' | translate }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="cardContent">
+      <p>{{ begin }} | {{end}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="actionYes">{{ 'i18n_eventCard_yes' | translate }}</button>
+    |
+    <button mat-button (click)="actionNotSure">{{ 'i18n_eventCard_notSure' | translate }}</button>
+    |
+    <button mat-button (click)="actionNo">{{ 'i18n_eventCard_no' | translate }}</button>
+  </mat-card-actions>
+</mat-card>

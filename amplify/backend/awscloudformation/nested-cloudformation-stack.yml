@@ -1,0 +1,324 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Root Stack for AWS Amplify CLI",
+  "Parameters": {
+    "DeploymentBucketName": {
+      "Description": "Name of the common deployment bucket provided by the parent stack",
+      "Type": "String",
+      "Default": "DeploymentBucket"
+    },
+    "AuthRoleName": {
+      "Type": "String",
+      "Default": "AuthRoleName"
+    },
+    "UnauthRoleName": {
+      "Type": "String",
+      "Default": "UnauthRoleName"
+    }
+  },
+  "Resources": {
+    "DeploymentBucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "BucketName": {
+          "Ref": "DeploymentBucketName"
+        }
+      }
+    },
+    "AuthRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Ref": "AuthRoleName"
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Deny",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity"
+            }
+          ]
+        }
+      }
+    },
+    "UnauthRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Ref": "UnauthRoleName"
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Deny",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity"
+            }
+          ]
+        }
+      }
+    },
+    "authuserPoolGroups": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/auth/template.json",
+        "Parameters": {
+          "AuthRoleArn": {
+            "Fn::GetAtt": [
+              "AuthRole",
+              "Arn"
+            ]
+          },
+          "UnauthRoleArn": {
+            "Fn::GetAtt": [
+              "UnauthRole",
+              "Arn"
+            ]
+          },
+          "authappclubberryscognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "authappclubberryscognitoAppClientIDWeb": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.AppClientIDWeb"
+            ]
+          },
+          "authappclubberryscognitoAppClientID": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.AppClientID"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "authappclubberryscognito": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/auth/appclubberryscognito-cloudformation-template.yml",
+        "Parameters": {
+          "resourceNameTruncated": "appclu846f0043",
+          "userPoolName": "appclubberryscognito-userpool",
+          "autoVerifiedAttributes": "email",
+          "mfaConfiguration": "OFF",
+          "mfaTypes": "SMS Text Message",
+          "smsAuthenticationMessage": "Your authentication code is {####}",
+          "smsVerificationMessage": "Your verification code is {####}",
+          "emailVerificationSubject": "Your verification code",
+          "emailVerificationMessage": "Your verification code is {####}",
+          "defaultPasswordPolicy": false,
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": "",
+          "requiredAttributes": "email,family_name,given_name",
+          "aliasAttributes": "",
+          "userpoolClientGenerateSecret": false,
+          "userpoolClientRefreshTokenValidity": 30,
+          "userpoolClientWriteAttributes": "email,family_name,given_name",
+          "userpoolClientReadAttributes": "email",
+          "userpoolClientLambdaRole": "appclu846f0043_userpoolclient_lambda_role",
+          "userpoolClientSetAttributes": true,
+          "sharedId": "846f0043",
+          "resourceName": "appclubberryscognito",
+          "authSelections": "userPoolOnly",
+          "authRoleArn": {
+            "Fn::GetAtt": [
+              "AuthRole",
+              "Arn"
+            ]
+          },
+          "unauthRoleArn": {
+            "Fn::GetAtt": [
+              "UnauthRole",
+              "Arn"
+            ]
+          },
+          "useDefault": "manual",
+          "usernameAttributes": "email",
+          "userPoolGroups": true,
+          "adminQueries": true,
+          "triggers": "{}",
+          "hostedUI": false,
+          "userPoolGroupList": "defaultUser",
+          "adminQueryGroup": "adminUser",
+          "serviceName": "Cognito",
+          "usernameCaseSensitive": false,
+          "parentStack": {
+            "Ref": "AWS::StackId"
+          },
+          "breakCircularDependency": true,
+          "permissions": "",
+          "dependsOn": "",
+          "env": "dev"
+        }
+      }
+    },
+    "functionAdminQueries3a259d0a": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/function/AdminQueries3a259d0a-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-appclubberrys-dev-05127-deployment",
+          "s3Key": "amplify-builds/AdminQueries3a259d0a-764476387a6248554d31-build.zip",
+          "authappclubberryscognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "apiAdminQueries": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/api/admin-queries-cloudformation-template.json",
+        "Parameters": {
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "authappclubberryscognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "functionAdminQueries3a259d0aArn": {
+            "Fn::GetAtt": [
+              "functionAdminQueries3a259d0a",
+              "Outputs.Arn"
+            ]
+          },
+          "functionAdminQueries3a259d0aName": {
+            "Fn::GetAtt": [
+              "functionAdminQueries3a259d0a",
+              "Outputs.Name"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "apiacbapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "CreateAPIKey": 0,
+          "AppSyncApiName": "acbapi",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "AuthCognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authappclubberryscognito",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "S3DeploymentBucket": "amplify-appclubberrys-dev-05127-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/b87336413e40475a6500d771dc43bce56987d94e",
+          "env": "dev"
+        }
+      }
+    },
+    "hostingS3AndCloudFront": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-appclubberrys-dev-05127-deployment/amplify-cfn-templates/hosting/template.json",
+        "Parameters": {
+          "bucketName": "appclubberrys-s3-hosting",
+          "env": "dev"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "Region": {
+      "Description": "CloudFormation provider root stack Region",
+      "Value": {
+        "Ref": "AWS::Region"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-Region"
+        }
+      }
+    },
+    "StackName": {
+      "Description": "CloudFormation provider root stack ID",
+      "Value": {
+        "Ref": "AWS::StackName"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-StackName"
+        }
+      }
+    },
+    "StackId": {
+      "Description": "CloudFormation provider root stack name",
+      "Value": {
+        "Ref": "AWS::StackId"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-StackId"
+        }
+      }
+    },
+    "DeploymentBucketName": {
+      "Description": "CloudFormation provider root stack deployment bucket name",
+      "Value": {
+        "Ref": "DeploymentBucketName"
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-DeploymentBucketName"
+        }
+      }
+    },
+    "AuthRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "AuthRole",
+          "Arn"
+        ]
+      }
+    },
+    "UnauthRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "UnauthRole",
+          "Arn"
+        ]
+      }
+    },
+    "AuthRoleName": {
+      "Value": {
+        "Ref": "AuthRole"
+      }
+    },
+    "UnauthRoleName": {
+      "Value": {
+        "Ref": "UnauthRole"
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateTodo {
+  onCreateTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTodo {
+  onUpdateTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTodo {
+  onDeleteTodo {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateProfile {
+  onCreateProfile {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateProfile {
+  onUpdateProfile {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteProfile {
+  onDeleteProfile {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateClub {
+  onCreateClub {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateClub {
+  onUpdateClub {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteClub {
+  onDeleteClub {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateDepartment {
+  onCreateDepartment {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateDepartment {
+  onUpdateDepartment {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteDepartment {
+  onDeleteDepartment {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateEvent {
+  onCreateEvent {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateEvent {
+  onUpdateEvent {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteEvent {
+  onDeleteEvent {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}

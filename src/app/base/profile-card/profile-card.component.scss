@@ -1,0 +1,34 @@
+.mat-card {
+    width: 100vh;
+  
+    text-align: center;
+    border: 2px solid;
+    border-color: #6140B2;
+    padding: 2px;
+    .cardHeader{
+      padding: 10px;
+      background-color: #6140B2;
+      height: 3vh;
+      .cardHeaderTitle{
+        color: #ffffff;
+      }
+      .cardHeaderSubTitle{
+        color: #ffffff;
+      }
+    }
+    .cardContent{
+      background-color: #fff;
+      padding: 10px;
+      .gridlist{
+        text-align: left;
+        .example-form {
+          min-width: 150px;
+          max-width: 500px;
+          width: 100%;
+        }
+        .example-full-width {
+          width: 100%;
+        }
+      }
+    }
+  }

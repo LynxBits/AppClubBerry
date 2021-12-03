@@ -1,0 +1,56 @@
+<mat-toolbar class="toolbar" color="primary">
+  <mat-toolbar-row>
+    <div>
+      <img
+        width="38"
+        alt="ClubBerrys Logo"
+        class="CBIcon"
+        src="assets\logo\cbLogoTransp.png"
+        routerLink="/auth"/>
+    </div>
+
+    <h1 style="font-size: larger;" routerLink="/auth">{{ title }}</h1>
+
+    <div *ngIf="authState === 'signedin' && user">
+      <a (click)="navigateToPage('/clublist')">Vereins-Liste</a>
+      <a (click)="navigateToPage('/club')">{{ 'i18n_clubCard_header' | translate }}</a>
+      <a (click)="navigateToPage('/department')">{{ 'i18n_departmentCard_header' | translate }}</a>
+      <a (click)="navigateToPage('/event')">{{ 'i18n_eventCard_header' | translate }}</a>
+    </div>
+    <span class="header-spacer"></span>
+
+    <div *ngIf="authState === 'signedin' && user">
+      <button mat-button  [matMenuTriggerFor]="userMenu">{{ 'i18n_general_greetings' | translate }}, {{ user.username }}</button>
+      <mat-menu #userMenu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="navigateToPage('/profile')"><mat-icon>person</mat-icon>
+          {{ 'i18n_profileCard_header' | translate }}
+        </button>
+
+        <button mat-menu-item>
+          <amplify-sign-out button-text="Abmelden"></amplify-sign-out>
+        </button>
+      </mat-menu>
+    </div>
+
+    <span style="padding: 2px;"></span>
+
+    <select (change)="selectLanguage($event)" class="language-picker">
+      <option value="de-DE">{{ 'language_german' | translate }}</option>
+      <option value="en-US">{{ 'language_english' | translate }}</option>
+    </select>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="content" role="main">
+      <router-outlet></router-outlet>
+</div>
+
+<footer>
+  <div class="spacer"></div>
+    <a routerLink="/impress">{{ 'i18n_legalNotice_header' | translate }} </a>
+    <a routerLink="/policy">{{ 'i18n_dataprivacy_header' | translate }} </a>
+    <a routerLink="/contact">{{ 'i18n_contact_header' | translate }} </a>
+    <a routerLink="/aboutus">{{ 'i18n_aboutus_header' | translate }} </a>
+  <div class="spacer"></div>
+</footer>

@@ -1,0 +1,50 @@
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type Profile @model @key(fields: ["email"]){
+  email: String!
+  firstname: String
+  lastname: String
+  age: Int
+  gender: String
+  street: String
+  streetnumber: String
+  city: String
+  post: String
+  country: String
+  phone: String
+}
+
+type Club @model @key(fields: ["clubname"]){
+  clubname: String!
+  clubmanagers: [String]
+  clubmembers: [String]
+  contact: String
+  street: String
+  streetnumber: String
+  city: String
+  post: String
+  country: String
+  phone: String
+  description: String
+  kinds: [String]
+}
+
+type Department @model @key(fields: ["departmentname"]){
+  departmentname: String!
+  departmentmanagers: [String]
+  clubmembers: [String]
+  kind: String
+  description: String
+}
+
+type Event @model @key(fields: ["date"]){
+  date: String!
+  eventname: String
+  eventmanagers: [String]
+  eventmembers: [String]
+  description: String
+}

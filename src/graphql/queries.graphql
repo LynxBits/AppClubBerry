@@ -1,0 +1,200 @@
+# this is an auto generated file. This will be overwritten
+query GetTodo($id: ID!) {
+  getTodo(id: $id) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+query ListTodos(
+  $filter: ModelTodoFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetProfile($email: String!) {
+  getProfile(email: $email) {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+query ListProfiles(
+  $email: String
+  $filter: ModelProfileFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listProfiles(
+    email: $email
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      email
+      firstname
+      lastname
+      age
+      gender
+      street
+      streetnumber
+      city
+      post
+      country
+      phone
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetClub($clubname: String!) {
+  getClub(clubname: $clubname) {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+query ListClubs(
+  $clubname: String
+  $filter: ModelClubFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listClubs(
+    clubname: $clubname
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      clubname
+      clubmanagers
+      clubmembers
+      contact
+      street
+      streetnumber
+      city
+      post
+      country
+      phone
+      description
+      kinds
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetDepartment($departmentname: String!) {
+  getDepartment(departmentname: $departmentname) {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+query ListDepartments(
+  $departmentname: String
+  $filter: ModelDepartmentFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listDepartments(
+    departmentname: $departmentname
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      departmentname
+      departmentmanagers
+      clubmembers
+      kind
+      description
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetEvent($date: String!) {
+  getEvent(date: $date) {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}
+query ListEvents(
+  $date: String
+  $filter: ModelEventFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listEvents(
+    date: $date
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      date
+      eventname
+      eventmanagers
+      eventmembers
+      description
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

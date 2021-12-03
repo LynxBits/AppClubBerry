@@ -1,0 +1,63 @@
+<div>
+
+  <div class="clublistLeft">
+    <mat-card class="clublist-table">
+      <mat-card-header class="cardHeader">
+        <mat-card-title class="cardHeaderTitle">{{header}} </mat-card-title>
+        <mat-card-subtitle class="cardHeaderSubTitle"> </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="cardContent">
+          <table matSort (matSortChange)="sortData($event)">
+            <tr>
+              <th mat-sort-header="sortname">Vereinsname</th>
+              <th mat-sort-header="sortcity">Stadt</th>
+              <th mat-sort-header="sortmanager">Vereinsleiter</th>
+              <th mat-sort-header="sortmembercount">Mitgliederanzahl</th>
+              <!--<th mat-sort-header="homepage">Webseite</th>-->
+              <th></th>
+            </tr>
+
+            <tr *ngFor="let item of sortedData">
+              <td>{{ item.clubname }}</td>
+              <td>{{ item.city }}</td>
+              <td>{{ item.clubmanagers }}</td>
+              <td>{{ item.clubmembercount }}</td>
+              <td>
+                <button (click)="getClub(item.clubname)"
+                  mat-icon-button
+                  aria-label="Open Club Profile"
+                  ><mat-icon >open_in_new</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="clublistRight" *ngIf="clicked">
+    <mat-card class="clublist-table">
+      <mat-card-header class="cardHeader">
+        <mat-card-title class="cardHeaderTitle">{{ 'i18n_clubCard_header' | translate }}</mat-card-title>
+        <mat-card-subtitle class="cardHeaderSubTitle"></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="cardContent">
+        <h1>{{ clubname }}</h1>
+        <mat-list>
+          <mat-list-item> {{ clubmanagers }}</mat-list-item>
+          <!--<p> {{ clubmembers }}</p>-->
+          <mat-list-item> {{ contact }}</mat-list-item>
+          <mat-list-item> {{ street }}</mat-list-item>
+          <mat-list-item> {{ streetnumber }}</mat-list-item>
+          <mat-list-item> {{ city }}</mat-list-item>
+          <mat-list-item> {{ post }}</mat-list-item>
+          <mat-list-item> {{ country }}</mat-list-item>
+          <mat-list-item> {{ phone }}</mat-list-item>
+          <mat-list-item> {{ description }}</mat-list-item>
+          <mat-list-item> {{ kinds }}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

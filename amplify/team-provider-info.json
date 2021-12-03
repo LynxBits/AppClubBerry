@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "XXXXX",
+      "UnauthRoleArn": "XXXXX",
+      "AuthRoleArn": "XXXXX",
+      "Region": "XXXXX",
+      "DeploymentBucketName": "XXXXX",
+      "UnauthRoleName": "XXXXX",
+      "StackName": "XXXXX",
+      "StackId": "XXXXX",
+      "AmplifyAppId": "XXXXX"
+    },
+    "categories": {
+      "auth": {
+        "appclubberrysauth": {},
+        "userPoolGroups": {}
+      }
+    }
+  }
+}

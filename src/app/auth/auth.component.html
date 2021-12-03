@@ -1,0 +1,20 @@
+<amplify-authenticator usernameAlias="email">
+
+  <amplify-sign-up
+    slot="sign-up"
+    usernameAlias="email"
+    [formFields]="formFields">
+  </amplify-sign-up>
+
+  <amplify-sign-in
+    header-text="Anmeldung"
+    slot="sign-in">
+  </amplify-sign-in>
+
+  <amplify-authenticator *ngIf="authState !== 'signedin'" ></amplify-authenticator>
+
+</amplify-authenticator>
+
+
+
+

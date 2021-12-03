@@ -1,0 +1,35 @@
+.mat-card {
+  text-align: center;
+  border: 2px solid;
+  border-color: #6140B2;
+  padding: 2px;
+  .cardHeader{
+    padding: 10px;
+    background-color: #6140B2;
+    height: 3vh;
+    .cardHeaderTitle{
+      color: #ffffff;
+    }
+    .cardHeaderSubTitle{
+      color: #ffffff;
+    }
+  }
+  .cardContent{
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+.mat-sort-header-container {
+  align-items: center;
+}
+
+.clublistLeft {
+  float: left;
+  padding-right: 2rem;
+}
+
+.clublistRight {
+  float: right;
+}

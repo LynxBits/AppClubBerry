@@ -1,0 +1,244 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateTodo(
+  $input: CreateTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  createTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateTodo(
+  $input: UpdateTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  updateTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteTodo(
+  $input: DeleteTodoInput!
+  $condition: ModelTodoConditionInput
+) {
+  deleteTodo(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateProfile(
+  $input: CreateProfileInput!
+  $condition: ModelProfileConditionInput
+) {
+  createProfile(input: $input, condition: $condition) {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateProfile(
+  $input: UpdateProfileInput!
+  $condition: ModelProfileConditionInput
+) {
+  updateProfile(input: $input, condition: $condition) {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteProfile(
+  $input: DeleteProfileInput!
+  $condition: ModelProfileConditionInput
+) {
+  deleteProfile(input: $input, condition: $condition) {
+    email
+    firstname
+    lastname
+    age
+    gender
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateClub(
+  $input: CreateClubInput!
+  $condition: ModelClubConditionInput
+) {
+  createClub(input: $input, condition: $condition) {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateClub(
+  $input: UpdateClubInput!
+  $condition: ModelClubConditionInput
+) {
+  updateClub(input: $input, condition: $condition) {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteClub(
+  $input: DeleteClubInput!
+  $condition: ModelClubConditionInput
+) {
+  deleteClub(input: $input, condition: $condition) {
+    clubname
+    clubmanagers
+    clubmembers
+    contact
+    street
+    streetnumber
+    city
+    post
+    country
+    phone
+    description
+    kinds
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateDepartment(
+  $input: CreateDepartmentInput!
+  $condition: ModelDepartmentConditionInput
+) {
+  createDepartment(input: $input, condition: $condition) {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateDepartment(
+  $input: UpdateDepartmentInput!
+  $condition: ModelDepartmentConditionInput
+) {
+  updateDepartment(input: $input, condition: $condition) {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteDepartment(
+  $input: DeleteDepartmentInput!
+  $condition: ModelDepartmentConditionInput
+) {
+  deleteDepartment(input: $input, condition: $condition) {
+    departmentname
+    departmentmanagers
+    clubmembers
+    kind
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateEvent(
+  $input: CreateEventInput!
+  $condition: ModelEventConditionInput
+) {
+  createEvent(input: $input, condition: $condition) {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateEvent(
+  $input: UpdateEventInput!
+  $condition: ModelEventConditionInput
+) {
+  updateEvent(input: $input, condition: $condition) {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteEvent(
+  $input: DeleteEventInput!
+  $condition: ModelEventConditionInput
+) {
+  deleteEvent(input: $input, condition: $condition) {
+    date
+    eventname
+    eventmanagers
+    eventmembers
+    description
+    createdAt
+    updatedAt
+  }
+}

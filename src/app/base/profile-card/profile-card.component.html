@@ -1,0 +1,129 @@
+<mat-card class="example-card">
+  <mat-card-header class="cardHeader">
+    <mat-card-title class="cardHeaderTitle">{{ 'i18n_profileCard_header' | translate }} </mat-card-title>
+    <mat-card-subtitle class="cardHeaderSubTitle"> </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="cardContent">
+    <mat-grid-list class="gridlist" cols="3" rowHeight="2:1">
+      <mat-grid-tile [colspan]="2" [rowspan]="3">
+        <form class="example-form">
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{ 'i18n_profileCard_firstname' | translate }}*</mat-label>
+            <input type="text" matInput [formControl]="firstnameFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Vorname"  [(ngModel)]="firstname" [readonly]="readonly">
+            <mat-error *ngIf="!firstnameFormControl.hasError('required')">
+              {{ 'i18n_profileCard_firstname_error' | translate }}
+            </mat-error>
+            <mat-error *ngIf="firstnameFormControl.hasError('required')">
+              {{ 'i18n_profileCard_firstname' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{ 'i18n_profileCard_lastname' | translate }}*</mat-label>
+            <input type="text" matInput [formControl]="lastnameFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Nachname"  [(ngModel)]="lastname" [readonly]="readonly">
+            <mat-error *ngIf="!lastnameFormControl.hasError('required')">
+              {{ 'i18n_profileCard_lastname_error' | translate }}
+            </mat-error>
+            <mat-error *ngIf="lastnameFormControl.hasError('required')">
+              {{ 'i18n_profileCard_lastname' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{ 'i18n_profileCard_age' | translate }}*</mat-label>
+                <input type="number" matInput [formControl]="ageFormControl" [errorStateMatcher]="matcher"
+                       placeholder="18" [(ngModel)]="age" [readonly]="readonly">
+                <mat-error *ngIf="!ageFormControl.hasError('required')">
+                  {{ 'i18n_profileCard_age_error' | translate }}
+                </mat-error>
+                <mat-error *ngIf="ageFormControl.hasError('required')">
+                  {{ 'i18n_profileCard_age' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="example-full-width" appearance="fill" *ngIf="!readonly">
+                <mat-label>{{ 'i18n_profileCard_gender' | translate }}*</mat-label>
+                <mat-select [(ngModel)]="gender" name="gender" [formControl]="genderFormControl" [errorStateMatcher]="matcher">
+                  <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                    {{gender.viewValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!genderFormControl.hasError('required')">
+                  {{ 'i18n_profileCard_gender_error' | translate }}
+                </mat-error>
+                <mat-error *ngIf="genderFormControl.hasError('required')">
+                  {{ 'i18n_profileCard_gender' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" *ngIf="readonly">
+              <mat-label>{{ 'i18n_profileCard_gender' | translate }}*</mat-label>
+              <input matInput [(ngModel)]="gender" name="gender" [readonly]="readonly">
+            </mat-form-field>
+          </td>
+          </tr></table>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{ 'i18n_profileCard_street' | translate }}</mat-label>
+                <input matInput placeholder="Slebogtstraße" [(ngModel)]="street" name="street" [readonly]="readonly">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_profileCard_houseNumber' | translate }}</mat-label>
+              <input matInput placeholder="4" [(ngModel)]="streetnumber" name="streetnumber" [readonly]="readonly">
+            </mat-form-field>
+          </td>
+          </tr></table>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_profileCard_city' | translate }}</mat-label>
+              <input matInput placeholder="Leipzig" [(ngModel)]="city" name="city" [readonly]="readonly">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_profileCard_postalCode' | translate }}</mat-label>
+              <input matInput #postalCode maxlength="5" placeholder="04578" [(ngModel)]="plz" name="plz" [readonly]="readonly">
+            </mat-form-field></td></tr>
+            <tr>
+            <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_profileCard_country' | translate }}</mat-label>
+               <input matInput placeholder="Deutschland" [(ngModel)]="country" name="country" [readonly]="readonly">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_profileCard_phone' | translate }}</mat-label>
+              <input matInput #postalCode maxlength="11" placeholder="0176 / 111111111" [(ngModel)]="phone" name="phone" [readonly]="readonly">
+            </mat-form-field></td>
+          </tr></table>
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <div>
+
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div *ngIf="!profileCreated">
+          <button mat-button (click)="createProfile();" *ngIf="!readonly">{{ 'i18n_general_save' | translate }}</button>
+        </div>
+        <div *ngIf="profileCreated">
+          <button mat-button (click)="updateProfile();" *ngIf="!readonly">{{ 'i18n_general_saveChanges' | translate }}</button>
+        </div>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <button mat-button (click)="deleteProfile();" *ngIf="!readonly">Delete</button>
+      </mat-grid-tile> -->
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+<!-- <div *ngFor="let profile of allProfiles">
+  <p>mail@key: {{ profile.email }} Vorname: {{ profile.firstname }} Nachname: {{ profile.lastname }}  </p>
+</div> -->

@@ -1,0 +1,58 @@
+<mat-card class="example-card">
+  <mat-card-header class="cardHeader">
+    <mat-card-title class="cardHeaderTitle">Event-Erstellung </mat-card-title>
+    <mat-card-subtitle class="cardHeaderSubTitle"> </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="cardContent">
+    <mat-grid-list class="gridlist" cols="3" rowHeight="2:1">
+      <mat-grid-tile [colspan]="3" [rowspan]="3">
+        <form class="example-form">
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Eventname*</mat-label>
+            <input type="text" matInput [formControl]="EventNameFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Eventname"  [(ngModel)]="eventName">
+            <mat-error *ngIf="!EventNameFormControl.hasError('required')">
+              Please enter a valid Eventname address
+            </mat-error>
+            <mat-error *ngIf="EventNameFormControl.hasError('required')">
+              Eventname <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Datum*</mat-label>
+            <input type="date" matInput [(ngModel)]="date" name="date">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Beginn*</mat-label>
+            <input type="text" matInput [formControl]="EventBeginFormControl" [errorStateMatcher]="matcher"
+            placeholder="12:00"  [(ngModel)]="beginn">
+            <mat-error *ngIf="!EventBeginFormControl.hasError('required')">
+              Please enter a valid Eventname address
+            </mat-error>
+            <mat-error *ngIf="EventBeginFormControl.hasError('required')">
+              Eventname <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ende*</mat-label>
+            <input type="text" matInput [formControl]="EventEndFormControl" [errorStateMatcher]="matcher"
+            placeholder="14:00"  [(ngModel)]="end">
+            <mat-error *ngIf="!EventEndFormControl.hasError('required')">
+              Please enter a valid Eventname address
+            </mat-error>
+            <mat-error *ngIf="EventEndFormControl.hasError('required')">
+              Eventname <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <button mat-button (click)="save();">Speichern</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

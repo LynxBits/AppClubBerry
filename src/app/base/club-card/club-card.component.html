@@ -1,0 +1,90 @@
+<mat-card class="example-card">
+  <mat-card-header class="cardHeader">
+    <mat-card-title class="cardHeaderTitle">{{ 'i18n_clubCard_header' | translate }}: {{ clubName }}</mat-card-title>
+    <mat-card-subtitle class="cardHeaderSubTitle"> </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="cardContent">
+    <mat-grid-list class="gridlist" cols="3" rowHeight="2:1">
+      <mat-grid-tile [colspan]="2" [rowspan]="3">
+        <form class="example-form">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{ 'i18n_clubCard_clubName' | translate }}*</mat-label>
+            <input type="text" matInput [formControl]="clubNameFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Verein"  [(ngModel)]="clubName" [readonly]="readonly">
+            <mat-error *ngIf="!clubNameFormControl.hasError('required')">
+              {{ 'i18n_clubCard_clubName_error' | translate }}
+            </mat-error>
+            <mat-error *ngIf="clubNameFormControl.hasError('required')">
+              {{ 'i18n_clubCard_clubName' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>{{ 'i18n_clubCard_clubContact' | translate }}*</mat-label>
+            <input type="text" matInput [formControl]="kontaktFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Verein"  [(ngModel)]="contact" [readonly]="readonly">
+            <mat-error *ngIf="!kontaktFormControl.hasError('required')">
+              {{ 'i18n_clubCard_clubContact_error' | translate }}
+            </mat-error>
+            <mat-error *ngIf="kontaktFormControl.hasError('required')">
+              {{ 'i18n_clubCard_clubContact' | translate }} <strong>{{ 'i18n_general_required' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>{{ 'i18n_clubCard_street' | translate }}</mat-label>
+                <input matInput placeholder="Slebogtstraße" [(ngModel)]="street" name="street" [readonly]="readonly">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_clubCard_houseNumber' | translate }}</mat-label>
+              <input matInput placeholder="4" [(ngModel)]="streetnumber" name="streetnumber" [readonly]="readonly">
+            </mat-form-field>
+          </td>
+          </tr></table>
+
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_clubCard_city' | translate }}</mat-label>
+              <input matInput placeholder="Leipzig" [(ngModel)]="city" name="city" [readonly]="readonly">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_clubCard_postalCode' | translate }}</mat-label>
+              <input matInput maxlength="5" placeholder="04578" [(ngModel)]="postalCode" name="postalCode" [readonly]="readonly">
+            </mat-form-field></td></tr>
+            <tr>
+            <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_clubCard_country' | translate }}</mat-label>
+              <input matInput placeholder="Deutschland" [(ngModel)]="country" name="country" [readonly]="readonly">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ 'i18n_clubCard_phone' | translate }}</mat-label>
+              <input matInput maxlength="11" placeholder="0176 / 111111111" [(ngModel)]="tel" name="tel" [readonly]="readonly">
+            </mat-form-field></td>
+          </tr></table>
+
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+        <div class="textArea">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>{{ 'i18n_clubCard_aboutUs' | translate }}</mat-label>
+          <textarea matInput placeholder="Gegründet am ..." [(ngModel)]="description" name="tel" [readonly]="readonly"></textarea>
+        </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <div *ngIf="!profileCreated">
+          <button mat-button (click)="createClub();" *ngIf="!readonly">{{ 'i18n_general_save' | translate }}</button>
+        </div>
+        <div *ngIf="profileCreated">
+          <button mat-button (click)="updateClub();" *ngIf="!readonly">{{ 'i18n_general_saveChanges' | translate }}</button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
